@@ -16,6 +16,9 @@ void SZXOR(char* buffer, int len, int szLen, BOOL Encrypt)
 		memset(buffer + szLen, 0, len - szLen);
 		buffer[szLen] = '\0';
 	}
+	
+	if(!szKeyLen)
+		szKeyLen = strlen(szKey)
 
 	int z = 0;
 	for (int i = 0; i < len; i++)
