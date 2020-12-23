@@ -28,7 +28,7 @@ void SZXOR(char* buffer, int len, int szLen, BOOL Encrypt)
 		else
 			z = i;
 
-		if (buffer[i] == szKey[i] || buffer[i] == (szKey[z] ^ ~szKey[z]))
+		if (buffer[i] == szKey[z] || buffer[i] == (szKey[z] ^ ~szKey[z]))
 		{
 			if (buffer[i] == '\0') break;
 			buffer[i] = buffer[i] ^ (~szKey[z]);
