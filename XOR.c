@@ -21,19 +21,14 @@ void SZXOR(char* buffer, int buffSize)
 	}
 
 	int z = 0;
-	for (int i = 0; i < len; i++, z++)
+	for (int i = 0; (i < len) && (buffer[i] != '\0'); i++, z++)
 	{
 		if (z >= szKeyLen)
 			z = 0;
 
 		if (buffer[i] == szKey[z] || buffer[i] == (szKey[z] ^ ~szKey[z]))
-		{
-			if (buffer[i] == '\0') break;
 			buffer[i] = buffer[i] ^ (~szKey[z]);
-			continue;
-		}
-
-		if (buffer[i] == '\0') break;
-		buffer[i] ^= szKey[z];
+		else
+			buffer[i] ^= szKey[z];
 	}
 }
