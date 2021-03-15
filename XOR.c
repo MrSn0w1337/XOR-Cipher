@@ -4,21 +4,21 @@ int XOR(int Value)
 {
 	if (Value != szKeyLen)
 		return Value ^ szKeyLen;
+	else if (Value != 1337)
+		return Value ^ 1337;
 	else
 		return Value ^ (szKeyLen + 1);
 }
 
-void SZXOR(char* buffer, int len, int szLen, BOOL Encrypt)
+void SZXOR(char* buffer, int buffSize)
 {
-	if (Encrypt)
+	int len = strlen(buffer);
+
+	if (buffSize)
 	{
-		if (!szLen) return;
-		memset(buffer + szLen, 0, len - szLen);
-		buffer[szLen] = '\0';
+		memset(buffer + len, 0, buffSize - len);
+		buffer[len] = '\0';
 	}
-	
-	if(!szKeyLen)
-		szKeyLen = strlen(szKey)
 
 	int z = 0;
 	for (int i = 0; i < len; i++)
