@@ -2,27 +2,17 @@
 
 int XOR(int Value)
 {
-	if (Value != szKeyLen)
-		return Value ^ szKeyLen;
-	else if (Value != 1337)
-		return Value ^ 1337;
-	else
-		return Value ^ (szKeyLen + 1);
+	return Value ^ (~szKeyLen);
 }
 
-void SZXOR(char* buffer, int buffSize)
+void SZXOR(char* buffer, size_t buffSize)
 {
-	int len = strlen(buffer);
-
-	if (buffSize)
+	size_t z = 0;
+	for (size_t i = 0; i < buffSize; i++, z++)
 	{
-		memset(buffer + len, 0, buffSize - len);
-		buffer[len] = '\0';
-	}
+		if (buffer[i] == 0)
+			continue;
 
-	int z = 0;
-	for (int i = 0; (i < len) && (buffer[i] != '\0'); i++, z++)
-	{
 		if (z >= szKeyLen)
 			z = 0;
 
